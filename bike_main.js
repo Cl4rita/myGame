@@ -5,6 +5,7 @@ let bike = new Bike(225,550,60,100,'./img/bikeNoBG_1.png')
 let bg = new Bike(0,0,500,700,'./img/garden2.jpeg')
 let stone = new Bike2(400,-40,45,100,'./img/stoneNoBG.png')
 let wood = new Bike2(200,-280,45,100,'./img/logWoodNoBG.png')
+let stone2 = new Bike2(300,-160,35,70,'./img/stone2BG.png')
 let arbusto = new Bike(0,0,500,200,'./img/arbustoBg_1.png')
 let arbusto2 = new Bike(0,500,500,200,'./img/arbusto2Bg.png')
 let arbusto3 = new Bike(300,450,25,25,'./img/arbustoRedondo2Bg.png')
@@ -75,6 +76,8 @@ function pontos(){
         bike.pts += 1
     }else if(bike.point(wood)){
         bike.pts += 1
+    }else if(bike.point(stone2)){
+        bike.pts += 1
     }
     if(bike.pts >= 10 && faseAtual === 1){
         faseAtual = 2
@@ -96,7 +99,11 @@ function colisao(){
         bike.vida -= 1
         wood.recomeca()
         batida.play()
-    } 
+    }else if(bike.pts >= 50 && bike.colid(stone2)){
+        bike.vida -= 1
+        stone2.recomeca()
+        batida.play()
+    }
 }
 function desenharInicio(){
     bikeModel.draw()
@@ -127,9 +134,12 @@ function desenha(){
         t2.des_text(bike.pts,442,24,'red','26px Times')
         t3.des_text('Vida: ',40,24,'pink','26px Times')
         t4.des_text(bike.vida,100,24,'red','26px Times')
-        t10.des_text('Fase: ',200,24,'pink','26px Times')
-        t11.des_text(faseAtual,260,24,'red','26px Times')
+        t10.des_text('Fase: ',210,24,'pink','26px Times')
+        t11.des_text(faseAtual,270,24,'red','26px Times')
         stone.des_bike_img()
+        if(bike.pts >= 50) {
+            stone2.des_bike_img()
+        }
         wood.des_bike_img()
         bike.des_bike_img()
         console.log(faseAtual)
@@ -151,6 +161,9 @@ function atualiza(){
         motor.play()
         stone.mov_bike2()
         wood.mov_bike2()
+        if(bike.pts >= 50) {
+            stone2.mov_bike2()
+        }
         bike.mov_bike()
         bike.anim('bikeNoBG_')
         arbusto.anim('arbustoBg_')
@@ -162,10 +175,11 @@ function atualiza(){
         stone.y += 7
         wood.y += 7
     }else if(faseAtual === 3){
-        stone.y += 9
-        wood.y += 9
+        stone.y += 8
+        wood.y += 8
     }else if(faseAtual === 4){
         stone.y += 10
+        stone2.y += 10
         wood.y += 10
     }
 }
