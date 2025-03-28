@@ -7,6 +7,11 @@ body{
     background-color: #3b3b3b;
 }
 
+img{
+    width: 100vw;
+    height: 100vh;
+}
+
 canvas{
     margin: auto;
     position: absolute;
@@ -15,4 +20,45 @@ canvas{
     left: 0;
     right: 0;
     background: #000000;
+}
+body.tela-inicio {
+    background: url('./img/fundo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;   
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: pink;
+}
+
+.botao-jogar {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #ff9cb0;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.botao-jogar:hover {
+    background-color: #ff6b81;
+    transform: scale(1.05);
 }
