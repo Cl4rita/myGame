@@ -29,12 +29,31 @@ let t11 = new Text()
 
 let musica = new Audio('./img/main-Song.wav')
 let intro = new Audio('./img/intro-Song.wav')
-let batida = new Audio('./img/bikeBatida.mp3')
-musica.volume = 0.8
+let batida = new Audio('./img/bikeBatida.wav')
+musica.volume = 0.7
 musica.loop = true
-intro.volume = 0.8
+intro.volume = 0.4
 intro.loop = true
-batida.volume = 0.9
+batida.volume = 0.8
+
+let isMuted = false
+const muteButton = document.getElementById('muteButton')
+
+muteButton.addEventListener('click', () => {
+    isMuted = !isMuted
+    
+    if(isMuted){
+        musica.volume = 0
+        intro.volume = 0
+        batida.volume = 0
+        muteButton.textContent = '🔇 Mudo'
+    }else{
+        musica.volume = 0.7
+        intro.volume = 0.4
+        batida.volume = 0.8
+        muteButton.textContent = '🔊 Som'
+    }
+})
 
 let jogar = true
 let jogo = false
@@ -127,23 +146,23 @@ function desenharInicio(){
     t7.des_text('Evite todos os obstáculos ',175,390,'red','16px Times')
 }
 function desenha(){
-    t1.des_text('Pontos: ',360,22,'pink','26px Times')
-    t2.des_text(bike.pts,442,24,'red','26px Times')
-    t3.des_text('Vida: ',40,24,'pink','26px Times')
-    t4.des_text(bike.vida,100,24,'red','26px Times')
-    t10.des_text('Fase: ',210,24,'pink','26px Times')
-    t11.des_text(faseAtual,270,24,'red','26px Times')
+    t1.des_text('Pontos: ',360,30,'pink','26px Times')
+    t2.des_text(bike.pts,442,30,'red','26px Times')
+    t3.des_text('Vida: ',40,30,'pink','26px Times')
+    t4.des_text(bike.vida,100,30,'red','26px Times')
+    t10.des_text('Fase: ',210,30,'pink','26px Times')
+    t11.des_text(faseAtual,270,30,'red','26px Times')
 
     if(jogar){
         bg.des_bike_img()
         // bg2.des_bg_img()
         // bg3.des_bg_img()
-        t1.des_text('Pontos: ',360,22,'pink','26px Times')
-        t2.des_text(bike.pts,442,24,'red','26px Times')
-        t3.des_text('Vida: ',40,24,'pink','26px Times')
-        t4.des_text(bike.vida,100,24,'red','26px Times')
-        t10.des_text('Fase: ',210,24,'pink','26px Times')
-        t11.des_text(faseAtual,270,24,'red','26px Times')
+        t1.des_text('Pontos: ',360,30,'pink','26px Times')
+        t2.des_text(bike.pts,442,30,'red','26px Times')
+        t3.des_text('Vida: ',40,30,'pink','26px Times')
+        t4.des_text(bike.vida,100,30,'red','26px Times')
+        t10.des_text('Fase: ',210,30,'pink','26px Times')
+        t11.des_text(faseAtual,270,30,'red','26px Times')
         stone.des_bike_img()
         if(bike.pts >= 50) {
             stone2.des_bike_img()
